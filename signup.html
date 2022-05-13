@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+        table {
+            background-color:rgba(26,188,156, 0.9);
+            position: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 50px;
+        }
+        caption {
+            
+            color: rgb(26, 167, 108);
+            margin-bottom: 0px;
+        }
+        input {
+            width: 100%;
+            height: 25px;
+            margin: 0px 0px 10px;
+            font-size:small;
+            border: 1px solid rgba(55, 182, 140, 0.6);
+        }
+        select {
+            border: 1px solid rgba(55, 182, 140, 0.6);
+            height: 25px;
+            font-size:small;
+        }
+        p {
+            font-size:small;
+        }
+        .menu {
+            font-weight: 500;
+            color:#fff;
+        }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;  
+  font-size:large;
+  color: rgb(255, 255, 255);
+}
+html,body{
+    font-family: 'Roboto', sans-serif;    
+}
+.wrapper{
+  display: inline-flex;
+  background: rgba(white,white, white, 0.0);
+  width: 365px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 20px 15px;
+  box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
+}
+.wrapper .option{
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+.wrapper .option .dot{
+  height: 5px;
+  width: 5px;
+  background: #d9d9d9;
+  border-radius: 20%;
+  position: relative;
+}
+
+input[type="radio"]{
+  display: none;
+}
+#male:checked:checked ~ .male,
+#female:checked:checked ~ .female{
+  border-color: rgb(44,62,80);
+  background: rgb(44,62,80);
+}
+#male:checked:checked ~ .male .dot,
+#female:checked:checked ~ .female .dot{
+  background: #fff;
+}
+#male:checked:checked ~ .male .dot::before,
+#female:checked:checked ~ .female .dot::before{
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper .option span{
+  font-size: 15px;
+  color: #808080;
+}
+#male:checked:checked ~ .male span,
+#female:checked:checked ~ .female span{
+  color: #fff;
+}
+        .button{
+  position: relative;
+  border: 1px;
+  background-color: rgb(44,62,80);
+  border-radius: 4em;
+  font-size: 18px;
+  color: white;
+  padding: 0.6em 1.3em;
+  cursor:pointer;
+  user-select:none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  width: 48%;
+  -webkit-transition-duration: 0.4s; /* Safari */
+}
+
+.button:hover {
+  transition-duration: 0.1s;
+  background-color: rgb(103, 123, 143);
+}
+
+.button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 4em;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 30%;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 10px 40px white;
+}
+
+.button:active:after {
+  box-shadow: 0 0 0 0 white;
+  position: absolute;
+  border-radius: 4em;
+  left: 0;
+  top:0;
+  opacity: 1;
+  transition: 0s;
+}
+
+.button:active {
+  top: 1px;
+}
+option {
+    color: black;
+    font-size: small;
+}
+
+
+/* ---------- Looking nice on CodePen ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+html, body{
+  height:100%;
+  margin: 0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color:rgb(44,62,80);
+}
+    </style>
+</head>
+<body>
+    <img src="signup4.png" alt="signup" width="600">
+    <table>
+        <caption></caption>
+        <tr>
+            <td>
+                <span class="ps_box int_id">
+                <label for="id" class="menu">아이디*</label><br>
+                <input type="text" onblur="userIdInfo()" id="userId" name="userId" class="int" placeholder= "영문 소문자(필수), 숫자 5~10자" maxlength="20" size="40">
+                <p id="userIdChk"></p>
+                </span></td>
+        </tr>
+        <tr>
+            <td><label for="id" class="menu">비밀번호*</label><br>
+                <input type="password" onblur="pw1Info()" id="pw1" name="pw1" class="int" placeholder="영문 소문자, 숫자, 특수문자(!#$-_)만 사용 8~12자" maxlength="20" size="40">
+                <p id="pw1Chk"></p>
+
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id" class="menu">비밀번호 재확인*</label><br>
+                <input type="password" onblur="pw2Info()" id="pw2" name="pw2" class="int" placeholder= "비밀번호를 재입력해주세요" maxlength="20" size="40">
+                <p id="pw2Chk"></p>
+
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id" class="menu">이름*</label><br>
+                <input type="text" onblur="usernameInfo()" id="username" name="username" class="int" placeholder= "한글 이름" maxlength="20" size="40">
+                <p id="usernameChk"></p>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <div class="join_row join_birthday">
+                <span class="ps_box">
+                    <label for="yy" class="menu">생년월일</label><br>
+                    <input type="text" onblur="yyInfo()" id="yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4" style="width: 50%;">
+                    <select id="mm" class="sel" aria-label="월" style="color: black;" style="width: 100px;">
+                        <option value="">월</option>
+                            <option value="01">
+                                1월
+                            </option>
+                                <option value="02">
+                                2월
+                            </option>
+                                <option value="03">
+                                3월
+                            </option>
+                                <option value="04">
+                                4월
+                            </option>
+                                <option value="05">
+                                5월
+                            </option>
+                                <option value="06">
+                                6월
+                            </option>
+                                <option value="07">
+                                7월
+                            </option>
+                                <option value="08">
+                                8월
+                            </option>
+                                <option value="09">
+                                9월
+                            </option>
+                                <option value="10">
+                                10월
+                            </option>
+                                <option value="11">
+                                11월
+                            </option>
+                                <option value="12">
+                                12월
+                            </option>
+                        </select>
+                            <input type="text" onblur="ddInfo()" id="dd" placeholder="일" aria-label="일" class="int" maxlength="2" style="width: 33%;">
+                            <p id="yyChk"></p>
+                            <label for="dd" class="lbl"></label>
+                </span>
+            </div>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id" class="menu">성별</label><br>
+                <div class="wrapper">
+                    <input type="radio" name="select" id="male" checked>
+                    <input type="radio" name="select" id="female">
+                      <label for="male" class="option male">
+                        <div class="dot"></div>
+                         <span>남</span>
+                         </label>
+                      <label for="female" class="option female">
+                        <div class="dot"></div>
+                         <span>여</span>
+                      </label>
+                   </div>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id" class="menu">이메일 주소*</label><br>
+                <input type="text"  id="emailAdd" name="emailAdd" class="int" maxlength="20" style="width: 140px;"> @
+                <input type="text" onblur="emailAdd()" id="emailDomain" name="emailDomain" class="int" maxlength="20" style="width: 120px;">
+                <select name="domain" id="domain" onchange="domainSelect()">
+                    <option value="">직접입력</option>
+                    <option value="gmail.com">구글</option>
+                    <option value="naver.com">네이버</option>
+                    <option value="daum.net">다음</option>
+                    <option value="hotmail.com">핫메일</option>
+                    <option value="yahoo.com">야후</option>
+                </select>
+                <p id="emailAddChk"></p>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id" class="menu">휴대전화</label><br>
+                <input type="text" onblur = "celPhone()" id="celPhone" name="celPhone1" class="int" maxlength="20" size="40" style="margin: 0px 0px 2px;">
+                <p id="celPhoneChk" style="margin-bottom: 20px;"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <button type="submit" class="button" >회원가입신청</button>
+            <button type="reset" class="button" style="margin-left: 5px;">입력초기화</button>
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+    function userIdInfo() {
+        const userId1 = document.getElementById("userId").value;
+        const userIdChk = document.getElementById("userIdChk");
+        const exp = /^(?=.*[a-z])[a-z\d]{5,10}$/;
+        if (userId1.match(exp)){
+            userIdChk.innerHTML = "조건에 맞는 아이디입니다."
+            userIdChk.style.color = "green";
+        } else {
+            userIdChk.innerHTML = "영문 소문자(필수), 숫자 5~10자의 아이디를 만들어 주세요."
+            userIdChk.style.color = "red";
+        }
+
+    }
+    function pw1Info() {
+        const pw1 = document.getElementById("pw1").value;
+        const pw1Chk = document.getElementById("pw1Chk");
+        const exp = /^(?=.*[a-z])(?=.*\d)(?=.*[!#$-_])[A-Za-z\d!#$-_]{8,12}$/;
+        if (pw1.match(exp)){
+            pw1Chk.innerHTML = "조건에 맞는 비밀번호입니다."
+            pw1Chk.style.color = "green";
+        } else {
+            pw1Chk.innerHTML = "영문 소문자, 숫자, 특수문자(!#$-_)를 사용해서 8~12자로 만들어 주세요."
+            pw1Chk.style.color = "red";
+        }
+    }
+    function pw2Info() {
+        const pw2 = document.getElementById("pw2").value;
+        const pw2Chk = document.getElementById("pw2Chk");
+        if (pw2==pw1.value && pw1.value.length != 0){
+            pw2Chk.innerHTML = "비밀번호가 일치합니다."
+            pw2Chk.style.color = "green";
+        } else {
+            pw2Chk.innerHTML = "비밀번호가 일치하지 않습니다."
+            pw2Chk.style.color = "red";
+        }
+    }
+    function usernameInfo() {
+        const username = document.getElementById("username").value;
+        const usernameChk = document.getElementById("usernameChk");
+        const exp = /^[ㄱ-ㅎ|가-힣]+$/;
+        if(username.match(exp)){
+            usernameChk.innerHTML = "멋진 이름이시네요!!";
+            usernameChk.style.color = "green";
+        } else {
+            usernameChk.innerHTML = "한글 이름 입력형식에 맞지 않습니다.";
+            usernameChk.style.color = "red";
+        }
+    }
+    function ddInfo() {
+        const year = document.getElementById("yy").value;
+        const yyChk = document.getElementById("yyChk");
+        const day = document.getElementById("dd").value;
+        const month = document.getElementById("mm").value;
+        const exp = /^(?=.*\d)[\d]{4}$/;
+        const exp1 = /^(?=.*\d)[\d]{2}$/;
+        if (year.match(exp)&&day.match(exp1)&&month.length != 0){
+            yyChk.innerHTML = "생년월일이 확인되었습니다.";
+            yyChk.style.color = "green";
+        } else {
+            yyChk.innerHTML = "연도를 4자리 숫자, 월을 선택, 일을 두 자리 숫자로 적어주세요";
+            yyChk.style.color = "red";
+        }
+    }
+    function emailAdd() {
+        const emailAddress = document.getElementById("emailAdd").value;
+        const emailAddChk = document.getElementById("emailAddChk");
+        const emailDomainValue = document.getElementById("emailDomain").value;
+        const exp = /^(?=.*[a-z])[a-z\d]{5,20}$/;
+        const exp1 = /^[a-z]{2,10}.[a-z]{2,5}$/;
+        if (emailAddress.match(exp)&&emailDomainValue.match(exp1)) {
+            emailAddChk.innerHTML = "조건에 맞는 이메일 주소입니다.";
+            emailAddChk.style.color = "green";
+        } else {
+            emailAddChk.innerHTML = "조건에 맞지않는 이메일 주소입니다.";
+            emailAddChk.style.color = "red";
+        }
+    }
+    function domainSelect() {
+        const domainValue = document.getElementById("domain").value;
+        const emailDomain = document.getElementById("emailDomain");
+        const emailDomainValue = document.getElementById("emailDomain").value;
+        const emailAddress = document.getElementById("emailAdd").value;
+        const emailAddChk = document.getElementById("emailAddChk");
+        const exp = /^(?=.*[a-z])[a-z\d]{5,20}$/;
+        const exp1 = /^[a-z]{2,10}.[a-z]{2,5}$/;
+        emailDomain.value = domainValue;
+        if (emailAddress.match(exp)&&emailDomain.match(exp1)) {
+            emailAddChk.innerHTML = "조건에 맞는 이메일 주소입니다.";
+            emailAddChk.style.color = "green";
+        }
+    }
+    function celPhone() {
+        const celPhone1 = document.getElementById("celPhone").value;
+        const celPhoneChk = document.getElementById("celPhoneChk");
+        const exp = /^\d{11}$/;
+        if (celPhone1.match(exp)) {
+            celPhoneChk.innerHTML = "전화번호가 입력되었습니다.";
+            celPhoneChk.style.color = "green";
+        } else {
+            celPhoneChk.innerHTML = "'-'없이 전화번호를 숫자로 12자리를 입력하세요.";
+            celPhoneChk.style.color = "red";
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
