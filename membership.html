@@ -11,9 +11,11 @@
         table {
             background-color:rgba(146, 230, 217, 0.3);
             position: center;
+            margin-top: 50px;
             margin-left: auto;
             margin-right: auto;
             padding: 50px;
+            width: 520px;
         }
         caption {
             
@@ -25,6 +27,7 @@
             height: 25px;
             margin: 0px 0px 10px;
             font-size:small;
+            color: black;
             border: 1px solid rgba(55, 182, 140, 0.6);
         }
         select {
@@ -38,6 +41,9 @@
         .menu {
             font-weight: 500;
             color:#fff;
+        }
+        #domain {
+            color: black;
         }
 *{
   margin: 0;
@@ -138,7 +144,7 @@ input[type="radio"]{
   left: 0;
   top:0;
   width: 100%;
-  height: 30%;
+  height: 100%;
   opacity: 0;
   transition: all 0.5s;
   box-shadow: 0 0 10px 40px white;
@@ -182,7 +188,8 @@ body{
     </style>
 </head>
 <body>
-    <img src="signup4.png" alt="signup" width="600">
+    <img src="signup4.png" alt="signup" width="600" style="margin-top: 45px;">
+    <form>
     <table>
         <caption></caption>
         <tr>
@@ -305,11 +312,12 @@ body{
         </tr>
         <tr>
             <td>
-            <button type="submit" class="button" >회원가입신청</button>
+            <button type="submit" onclick="signup()" class="button" >회원가입신청</button>
             <button type="reset" class="button" style="margin-left: 5px;">입력초기화</button>
             </td>
         </tr>
     </table>
+</form>
 </body>
 <script>
     function userIdInfo() {
@@ -414,6 +422,9 @@ body{
             celPhoneChk.innerHTML = "'-'없이 전화번호를 숫자로 12자리를 입력하세요.";
             celPhoneChk.style.color = "red";
         }
+        
+    }
+    function signup() {
         
     }
 
