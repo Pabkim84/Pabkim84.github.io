@@ -9,7 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
         table {
-            background-color:rgba(26,188,156, 0.9);
+            background-color:rgba(146, 230, 217, 0.3);
             position: center;
             margin-left: auto;
             margin-right: auto;
@@ -311,7 +311,7 @@ body{
         </tr>
     </table>
 </body>
-<script>
+<script  language = "javascript">
     function userIdInfo() {
         const userId1 = document.getElementById("userId").value;
         const userIdChk = document.getElementById("userIdChk");
@@ -416,7 +416,10 @@ body{
         }
         
     }
-
+    loginId = userId.value;
+    loginPw1 = pw1.value; 
+    
+    location.href="signin.html" + loginId + "/" + loginPw1;
 
 
 
